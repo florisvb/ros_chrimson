@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="06c2", ATTRS{idProduct}=="0037", ATTRS{serial}=="276995", GROUP="plugdev", SYMLINK+="phidgetsanalog276995", MODE:="0666"
