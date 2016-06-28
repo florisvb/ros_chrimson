@@ -50,7 +50,7 @@ class PhidgetsAnalogOut:
         self.subscriber_2 = rospy.Subscriber(topic_2_subscriber, Float32, self.subscriber_2_callback)
         self.publisher = rospy.Publisher(topic_publisher, Float32)
         
-        nodename = 'phidgets_chrimson_analog_' + str(self.channel)
+        nodename = 'phidgets_chrimson_analog'
         rospy.init_node(nodename, anonymous=True)
         
     def subscriber_1_callback(self, data):
@@ -103,9 +103,9 @@ if __name__ == '__main__':
                         help="topic 2 to subscribe to")
     parser.add_option("--publish", type="str", dest="publish", default='',
                         help="topic to publish to")
-    parser.add_option("--channel_1", type="int", dest="channel", default=0,
+    parser.add_option("--channel_1", type="int", dest="channel_1", default=0,
                         help="phidgets analog out channel (0,1,2,3)")
-    parser.add_option("--channel_2", type="int", dest="channel", default=1,
+    parser.add_option("--channel_2", type="int", dest="channel_2", default=1,
                         help="phidgets analog out channel (0,1,2,3)")
     parser.add_option("--pulselength", type="float", dest="pulselength", default=-1,
                         help="pulselength, seconds")
@@ -122,7 +122,8 @@ if __name__ == '__main__':
     analog = PhidgetsAnalogOut( topic_1_subscriber=options.subscribe_1, 
                                 topic_2_subscriber=options.subscribe_2, 
                                 topic_publisher=options.publish, 
-                                channel=options.channel, 
+                                channel_1=options.channel_1,
+                                channel_2=options.channel_2, 
                                 pulselength=options.pulselength, 
                                 pulseinterval=options.pulseinterval, 
                                 pulse=options.pulse,
